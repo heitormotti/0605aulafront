@@ -1,0 +1,67 @@
+Explicação das Expressões Regulares no Código JavaScript
+
+O código JavaScript apresentado utiliza expressões regulares (REGEX) para validar os campos nome,
+email e telefone no formulário. Vamos analisar cada REGEX em detalhes:
+
+1. Validação do Nome:
+
+/^[A-Za-z\s]+$/
+
+Explicação:
+    * `^`: indica o início da string.
+    * `[A-Za-z]`: corresponde a qualquer letra maiúscula ou minúscula (`A` a `Z` ou `a` a `z`).
+    * `\s`: corresponde a um espaço em branco.
+    * `+`: indica que o caractere anterior (`[A-Za-z\s]`) pode ser repetido uma ou mais vezes.
+    * `$`: indica o final da string.
+
+Funcionamento:
+    * Essa REGEX verifica se o valor do campo nome contém apenas letras e espaços em branco, sem nenhum 
+outro caractere especial ou número.
+    * Se a REGEX encontrar uma correspondência, o nome é considerado válido. Se não encontrar, a mensagem 
+de erro "Nome inválido: apenas letras e espaços são permitidos." é exibida.
+
+2. Validação do Email (REGEX Básico):
+
+/^[\w-+\.]+@[\w-+\.]+\.[a-z]{2,}$/i
+
+Explicação:
+    * `^`: indica o início da string.
+    * `[\w-+\.]+`: corresponde a um ou mais caracteres alfanuméricos (`a` a `z`, `A` a `Z`, `0` a `9`), hifens (`-`), pontos (`+`) ou sublinhados (`_`).
+    * `@`: corresponde ao símbolo "arroba" (`@`).
+    * `[\w-+\.]+`: corresponde a um ou mais caracteres alfanuméricos (`a` a `z`, `A` a `Z`, `0` a `9`), hifens (`-`), pontos (`+`) ou sublinhados (`_`).
+    * `\.`: corresponde ao ponto (`.`).
+    * `[a-z]{2,}`: corresponde a um ou mais caracteres minúsculos (`a` a `z`), com no mínimo 2 caracteres.
+    * `$`: indica o final da string.
+    * `i`: indica que a pesquisa não diferencia maiúsculas e minúsculas.
+
+Funcionamento:
+    * Essa REGEX verifica se o valor do campo email segue o formato básico de um email:
+        * Uma sequência de caracteres alfanuméricos, hifens, pontos ou sublinhados, seguida do símbolo "arroba" (`@`).
+        * Uma sequência de caracteres alfanuméricos, hifens, pontos ou sublinhados.
+        * Um ponto (`.`) seguido de um ou mais caracteres minúsculos (`a` a `z`), representando o domínio.
+    * Essa REGEX não valida todos os formatos de email possíveis, mas serve como uma base para a validação.
+    * Se a REGEX encontrar uma correspondência, o email é considerado válido. Se não encontrar, a mensagem de erro "Email inválido." é exibida.
+
+3. Validação do Telefone (Formato DDD + Número):
+
+/^(\d{2})\s*(\d{4})\s*(\d{4})$/
+
+Explicação:
+    * `^`: indica o início da string.
+    * `(\d{2})`: captura um grupo de 2 dígitos, que representam o DDD.
+    * `\s*`: corresponde a zero ou mais espaços em branco (opcional).
+    * `(\d{4})`: captura um grupo de 4 dígitos, que representam a primeira parte do número.
+    * `\s*`: corresponde a zero ou mais espaços em branco (opcional).
+    * `(\d{4})`: captura um grupo de 4 dígitos, que representam a segunda parte do número.
+    * `$`: indica o final da string.
+
+Funcionamento:
+    * Essa REGEX verifica se o valor do campo telefone segue o formato DDD + número, com espaços em branco 
+opcionais entre os grupos de dígitos.
+    * Se a REGEX encontrar uma correspondência, o telefone é considerado válido. Se não encontrar,
+a mensagem de erro "Telefone inválido: formato DDD + número." é exibida.
+
+Observações:
+
+* As expressões regulares utilizadas neste exemplo são básicas e podem ser aprimoradas para atender a critérios de validação mais específicos.
+* Você pode
